@@ -7602,6 +7602,11 @@ PrefabInstance:
       objectReference: {fileID: 1112329369}
     - target: {fileID: 4714896104042179525, guid: 87421922d03af5846a1ebdbbc76128e2,
         type: 3}
+      propertyPath: force
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714896104042179525, guid: 87421922d03af5846a1ebdbbc76128e2,
+        type: 3}
       propertyPath: impact
       value: 
       objectReference: {fileID: 1344015787}
@@ -7613,7 +7618,7 @@ PrefabInstance:
     - target: {fileID: 4714896104767728579, guid: 87421922d03af5846a1ebdbbc76128e2,
         type: 3}
       propertyPath: force
-      value: -200
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4714896104767728579, guid: 87421922d03af5846a1ebdbbc76128e2,
         type: 3}
@@ -7625,6 +7630,11 @@ PrefabInstance:
       propertyPath: ammoCount
       value: 
       objectReference: {fileID: 1112329369}
+    - target: {fileID: 4714896104947855227, guid: 87421922d03af5846a1ebdbbc76128e2,
+        type: 3}
+      propertyPath: force
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 4714896104947855227, guid: 87421922d03af5846a1ebdbbc76128e2,
         type: 3}
       propertyPath: impact

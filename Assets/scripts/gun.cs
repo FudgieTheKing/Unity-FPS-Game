@@ -20,6 +20,7 @@ public class gun : MonoBehaviour
     public float nextFire = 0f;
     private bool reloading = false;
     public TextMeshProUGUI ammoCount;
+
     // Update is called once per frame
 
     void Start()
@@ -108,7 +109,7 @@ public class gun : MonoBehaviour
             }
             if (hit.rigidbody != null)
             {
-                hit.rigidbody.AddForce(hit.normal * force);
+                hit.rigidbody.AddForce(FPScam.transform.forward * force);
             }
 
             GameObject  imapctgo = Instantiate(impact, hit.point,Quaternion.LookRotation(hit.normal));

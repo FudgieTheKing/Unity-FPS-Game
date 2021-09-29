@@ -7,6 +7,7 @@ public class gunSwitch : MonoBehaviour
 {
     public TextMeshProUGUI ammoCount;
     public int selectedWeap = 0;
+    private GameObject curObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,13 @@ public class gunSwitch : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
-            selectedWeap = 0;
+            RaycastHit hitInfo;
+            Physics.Raycast(transform.position, transform.forward, out hitInfo, 5f);
+            if (hitInfo.rigidbody != null)
+            {
+                selectedWeap = 0;
+            }
+               
         }
 
         if (previousweap != selectedWeap)

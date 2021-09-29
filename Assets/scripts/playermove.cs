@@ -7,7 +7,7 @@ public class playermove : MonoBehaviour
 {
     public ParticleSystem landing;
     public const int doublejump = 1;
-    public int currentJump = 0;
+    private int currentJump = 0;
     Vector3 vel;
     public Transform player;
     public Animator anima;
@@ -19,11 +19,11 @@ public class playermove : MonoBehaviour
     public Transform groundcheck;
     public Transform headcheck;
     public Transform cubez;
-    public float grounddist = .4f;
+    private float grounddist = .4f;
     public LayerMask groundmask;
 
-    public bool isGrounded;
-    public bool isCrouching;
+    private bool isGrounded;
+    private bool isCrouching;
     public float jumpHeight = 3f;
 
     public CapsuleCollider colli;
