@@ -3,7 +3,7 @@
 public class target : MonoBehaviour
 {
     public float health = 50f;
-    // Start is called before the first frame update
+
     public void damage( float amount)
     {
         health -= amount;

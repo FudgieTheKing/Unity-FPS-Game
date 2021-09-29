@@ -102,7 +102,7 @@ public class mouselookie : MonoBehaviour
 
         if (hitInfo.rigidbody == null)
             return;
-        xlimit = 38f;
+        xlimit = 35f;
 
         curBody = hitInfo.rigidbody;
         curBody.useGravity = false;
