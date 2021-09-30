@@ -18,11 +18,13 @@ public class EnemyAi : MonoBehaviour
     public float walkingRange;
 
     //attack
+    public GameObject projectile;
     public float attackTime;
     private bool justAttacked;
     public float damage = 1f;
     public float health = 50f;
-
+    Vector3 updatePos;
+    Vector3 moveDir;
     //State machines
     public float visionRange;
     public float attackRange;
@@ -37,6 +39,20 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
+        moveDir = (player.position - transform.position).normalized * 11f;
+        updatePos = transform.position;
+        updatePos.y = transform.position.y+ 4.7f;
+        Debug.DrawRay(transform.position, transform.forward*attackRange,Color.green);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+        {
+            playHP target = hit.transform.GetComponent<playHP>();
+            if (target != null)
+            {
+               
+            }
+        }
+        //stops movement
         isPlayerSeen = Physics.CheckSphere(transform.position, visionRange, playerlayer);
         isPlayerAttackable = Physics.CheckSphere(transform.position, attackRange, playerlayer);
 
@@ -109,24 +125,18 @@ public class EnemyAi : MonoBehaviour
     }
 
     void attacking()
-    {
-        //atacks
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
-        {
-            playHP target = hit.transform.GetComponent<playHP>();
-            if (target != null)
-            {
-                target.damage(damage);
-            }
-        }
-        //stops movement 
+    {        
+ 
         agent.SetDestination(transform.position);
         //faces enemy toward player
 
 
         if (!justAttacked)
         {
+            Rigidbody rb = Instantiate(projectile, updatePos, Quaternion.identity).GetComponent<Rigidbody>();
+
+            rb.velocity = moveDir;
+
             justAttacked = true;
             Invoke(nameof(resetAttack), attackTime);
         }
@@ -138,6 +148,8 @@ public class EnemyAi : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, transform.forward);
     }
 
 }

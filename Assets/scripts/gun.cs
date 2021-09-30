@@ -37,9 +37,9 @@ public class gun : MonoBehaviour
     void Update()
     {
 
+        Debug.DrawRay(FPScam.transform.position, FPScam.transform.forward, Color.green);
 
-
-        if(totAmmo > clip)
+        if (totAmmo > clip)
         {
             ammoCount.text = "   Ammo: " + currentAmmo.ToString() + "/" + (totAmmo - clip).ToString();
         }
@@ -98,6 +98,7 @@ public class gun : MonoBehaviour
     {
         currentAmmo--;
         muzzleflash.Play();
+        
         RaycastHit hit;
         if (Physics.Raycast(FPScam.transform.position, FPScam.transform.forward, out hit, range))
         {
