@@ -133,8 +133,8 @@ public class EnemyAi : MonoBehaviour
 
         if (!justAttacked)
         {
-            Rigidbody rb = Instantiate(projectile, updatePos, Quaternion.identity).GetComponent<Rigidbody>();
-
+            Rigidbody rb = Instantiate(projectile, updatePos, transform.rotation).GetComponent<Rigidbody>();
+            
             rb.velocity = moveDir;
 
             justAttacked = true;

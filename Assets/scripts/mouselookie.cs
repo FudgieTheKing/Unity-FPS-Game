@@ -15,6 +15,7 @@ public class mouselookie : MonoBehaviour
     //the object being held
     private GameObject curObject;
     private Rigidbody curBody;
+    public LayerMask props;
 
     //the rotation of the curObject at pickup relative to the camera
     private Quaternion relRot;
@@ -96,9 +97,9 @@ public class mouselookie : MonoBehaviour
     void PickupItem()
     {
         
-        //raycast to find an item  Physics.SphereCast()
+        //raycast to find an item  
         RaycastHit hitInfo;
-        Physics.Raycast(transform.position, transform.forward, out hitInfo, 5f);
+        Physics.Raycast(transform.position, transform.forward, out hitInfo, 5f,props);
 
         if (hitInfo.rigidbody == null)
             return;
