@@ -18,6 +18,7 @@ public class EnemyAi : MonoBehaviour
     public float walkingRange;
 
     //attack
+    public float yoffset = 4.7f;
     public GameObject projectile;
     public float attackTime;
     private bool justAttacked;
@@ -39,9 +40,10 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
-        moveDir = (player.position - transform.position).normalized * 11f;
+        projectile.transform.LookAt(player);
+        moveDir = (player.position - transform.position).normalized * (attackRange+1);
         updatePos = transform.position;
-        updatePos.y = transform.position.y+ 4.7f;
+        updatePos.y = transform.position.y+ yoffset;
         Debug.DrawRay(transform.position, transform.forward*attackRange,Color.green);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))

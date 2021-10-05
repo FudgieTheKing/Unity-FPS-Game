@@ -67,7 +67,7 @@ public class playermove : MonoBehaviour
                 speed = 2f;
                 animaP.SetBool("crouch", true);
    
-                control.height = 1.3f;
+                control.height = 1.7f;
 
 
         }

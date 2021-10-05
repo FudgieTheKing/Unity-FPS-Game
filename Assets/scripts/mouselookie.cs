@@ -59,6 +59,7 @@ public class mouselookie : MonoBehaviour
                 xlimit = 90f;
                 curBody.useGravity = true;
                 curBody.AddForce(transform.forward * throwforce, ForceMode.Impulse);
+                curObject.layer = 11;
                 curBody = null;
                 curObject = null;
             }
@@ -108,8 +109,9 @@ public class mouselookie : MonoBehaviour
         curBody = hitInfo.rigidbody;
         curBody.useGravity = false;
 
-
+        
         curObject = hitInfo.rigidbody.gameObject;
+        curObject.layer = 3;
 
 
         //hack w/ parenting & unparenting to get the relative rotation
@@ -124,6 +126,7 @@ public class mouselookie : MonoBehaviour
     //drops the current item
     void DropItem()
     {
+        curObject.layer = 11;
         xlimit = 90f;
         curBody.useGravity = true;
         curBody = null;
