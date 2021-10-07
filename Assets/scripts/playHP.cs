@@ -17,6 +17,9 @@ public class playHP : MonoBehaviour
         HP.text = "   HP:  " + health.ToString();
     }
 
+
+
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "bullet")
