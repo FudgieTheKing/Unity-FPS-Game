@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - prop
   - player
+  - button
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - pickup
   - Water
   - UI
-  - 
+  - bullet
   - enemy
   - ground
   - weapon

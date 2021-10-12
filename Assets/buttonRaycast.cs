@@ -8,7 +8,7 @@ public class buttonRaycast : MonoBehaviour
     public Camera FPScam;
     public float range = 5f;
     public Transform button;
-    public float buttonTime = 5f;
+    public float buttonTime = 2.5f;
     Vector3 OGpos;
     bool isPressed;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class buttonRaycast : MonoBehaviour
         {
             StartCoroutine(ExecuteAfterTime(buttonTime));
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !isPressed)
         {
             rays();
         }
@@ -34,13 +34,14 @@ public class buttonRaycast : MonoBehaviour
     void rays()
     {
         RaycastHit hit;
-        if (Physics.Raycast(FPScam.transform.position, FPScam.transform.forward, out hit, range))
+        if (Physics.Raycast(FPScam.transform.position, FPScam.transform.forward, out hit, range) && hit.transform.tag == "button")
         {
            print("lol");
            isPressed = true;
            Vector3 changepos = button.position;
            changepos.y -= .2f;
            button.position = changepos;
+
         }
     }
 
@@ -48,8 +49,15 @@ public class buttonRaycast : MonoBehaviour
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
+        ting();
+
+
+    }
+
+
+    void ting()
+    {
         isPressed = false;
         button.position = OGpos;
-
     }
 }
